@@ -20,9 +20,11 @@ before_install:
       sudo rm /usr/bin/gcov /usr/bin/g++;
       sudo ln -s /usr/bin/gcov-4.8 /usr/bin/gcov;
       sudo ln -s /usr/bin/g++-4.8 /usr/bin/g++;
+      export CC="gcc-4.8";
       export CXX="g++-4.8";
       export GYP_DEFINES="coverage=1";
       export JOBS=4;
+      sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 90;
     fi
   - BUILD_ONLY=true npm install
 # This is a random private key used purely for testing.

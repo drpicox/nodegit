@@ -17,10 +17,10 @@ before_install:
       sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test;
       sudo apt-get -qq update;
       sudo apt-get -qq install g++-4.8 lcov;
-      export CXX='g++-4.8';
-      export GYP_DEFINES='coverage=1';
+      export CXX="g++-4.8";
+      export GYP_DEFINES="coverage=1";
+      export JOBS=4;
     fi
-  - "export JOBS=4"
   - BUILD_ONLY=true npm install
 # This is a random private key used purely for testing.
 before_script:
@@ -43,9 +43,9 @@ os:
   - osx
 script:
   - if [ $TRAVIS_OS_NAME == "linux" ] && [ $NODE_VERSION == "0.12" ]; then
-      npm test && npm run cov && npm run coveralls
+      npm test && npm run cov && npm run coveralls;
     else
-      npm test
+      npm test;
     fi
 notifications:
   slack:
